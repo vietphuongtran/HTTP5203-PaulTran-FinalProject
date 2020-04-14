@@ -1,6 +1,4 @@
-//client id=1014621907623-psaaohgll979f9m44c7nik0tn9e29d2i.apps.googleusercontent.com
-//secret =s-YX_IFwTEFn3EZC3vY1zfD0
-//key AIzaSyBcjJih5MQcecjdtUKPHxO8IJX1ODoqLSM
+
        var CLIENT_ID = '1014621907623-psaaohgll979f9m44c7nik0tn9e29d2i.apps.googleusercontent.com';
       var API_KEY = 'AIzaSyBcjJih5MQcecjdtUKPHxO8IJX1ODoqLSM';
 
@@ -85,13 +83,14 @@
         pre.appendChild(textContent);
       }
     function createEvent() {
-        var formHandle = document.forms[0];          
-        
+        //when create the event grabbed the form and the value inside it
+        var formHandle = document.forms[0];
+        //call on function processForm
+        formHandle.onsubmit = processForm;
+        function processForm() {
             gapi.load('auth2', function() {
-                formHandle.onsubmit = processForm;
-            function processForm () {
-            var visitorEmail = formHandle.visitor_email;
-            var bookingDate = formHandle.bookingdate;
+                var visitorEmail = formHandle.visitor_email;
+                var bookingDate = formHandle.bookingdate;
                 var event = {
                     'summary': 'Pompeii',
                     'location': '4213 Tea Garden Circle, Mississauga, L5B 2Z1',
@@ -99,35 +98,35 @@
                     'start': {
                     'dateTime': bookingDate.value +'T19:00:00-07:00',
                     'timeZone': 'America/Los_Angeles'
-            },
-              'end': {
-                'dateTime': bookingDate.value +'T21:00:00-07:00',
-                'timeZone': 'America/Los_Angeles'
-          },
-              'recurrence': [
-                'RRULE:FREQ=DAILY;COUNT=1'
-              ],
-              'attendees': [
-                {'email': visitorEmail.value},
-              ],
-              'reminders': {
-                'useDefault': false,
-                'overrides': [
-                  {'method': 'email', 'minutes': 24 * 60},
-                  {'method': 'popup', 'minutes': 10}
-                ]
-              }
-            };
+                },
+                  'end': {
+                    'dateTime': bookingDate.value +'T21:00:00-07:00',
+                    'timeZone': 'America/Los_Angeles'
+              },
+                  'recurrence': [
+                    'RRULE:FREQ=DAILY;COUNT=1'
+                  ],
+                  'attendees': [
+                    {'email': visitorEmail.value},
+                  ],
+                  'reminders': {
+                    'useDefault': false,
+                    'overrides': [
+                      {'method': 'email', 'minutes': 24 * 60},
+                      {'method': 'popup', 'minutes': 10}
+                    ]
+                  }
+                };
 
-            var request = gapi.client.calendar.events.insert({
-              'calendarId': 'primary',
-              'resource': event
-            });
+                var request = gapi.client.calendar.events.insert({
+                  'calendarId': 'primary',
+                  'resource': event
+                });
 
-        request.execute(function(event) {
-          appendPre('Event created: ' + event.htmlLink);
-            });
-        }
-        });
-    }
+                request.execute(function(event) {
+                    appendPre('Event created: ' + event.htmlLink);
+                });      
+        });//end gapi load
+    }//end processForm function 
+}//end createEvent function
  

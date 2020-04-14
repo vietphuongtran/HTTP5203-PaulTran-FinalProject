@@ -109,7 +109,6 @@ function bookingEventLoad() {
             confirmPhone.innerHTML = visitorPhone.value;    
             confirmEmail.innerHTML = visitorEmail.value;           
         }
-       
-        return false;
+       //return false;
     }//end validation processForm
 }//end EvenLoad
