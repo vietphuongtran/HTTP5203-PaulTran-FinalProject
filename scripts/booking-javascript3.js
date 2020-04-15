@@ -16,7 +16,6 @@ function bookingEventLoad() {
     formHandle.onsubmit = processForm;
     function processForm () {
         var isValid = true;
-        
         //validate the date
         var bookingDate = formHandle.bookingdate;
         //console.log(bookingDate);
@@ -25,7 +24,7 @@ function bookingEventLoad() {
         if (bookingDate.value === "" || bookingDate.value === null || !regexDate.test(bookingDate.value)) {           
             isValid= false;
             bookingDate.focus();
-            
+            return false;
         }
         
         //validate location dropdown list
@@ -36,7 +35,7 @@ function bookingEventLoad() {
             isValid= false;
             errorMsg.innerHTML += "<div>Please specify the number of guests</div>";
             bookingQuantity.focus();
-            //return false;
+            return false;
         }
         
         //validate event type
@@ -52,7 +51,7 @@ function bookingEventLoad() {
             isValid= false;
             errorMsg.innerHTML += "<div>Please tell us your name</div>";
             visitorFullName.focus();
-            //return false;
+            return false;
         }
         //validate Phone number
         var regexPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
@@ -61,7 +60,7 @@ function bookingEventLoad() {
             isValid= false;
             errorMsg.innerHTML += "<div>Please tell us your phone</div>";
             visitorPhone.focus();
-            //return false;
+            return false;
         }
         
         
@@ -73,7 +72,7 @@ function bookingEventLoad() {
             isValid= false;
             errorMsg.innerHTML += "<div>Please tell us your email</div>";
             visitorEmail.focus();
-            //return false;
+            return false;
         }
         //Confirm message
         var confirmMsg = document.getElementById("confirm_message");
@@ -109,6 +108,6 @@ function bookingEventLoad() {
             confirmPhone.innerHTML = visitorPhone.value;    
             confirmEmail.innerHTML = visitorEmail.value;           
         }
-       //return false;
+        return true;
     }//end validation processForm
-}//end EvenLoad
+}//end EventLoad

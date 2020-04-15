@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script type="text/javascript" src="testing3.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+    </script>
+  </head>
+  <body>
+    <div id="authorize-div" style="display: none">
+      <span>Authorize access to Google Calendar API</span>
+      <!--Button for the user to click to initiate auth sequence -->
+      <button id="authorize-button" onclick="handleAuthClick(event)">
+        Authorize
+      </button>
+    </div>
+    <pre id="output"></pre>
+    <form method="put" action ="">
+        <label for="bookingDate">When do you want to visit us:</label>
+        <input type="date" name="bookingDate" id="bookingDate"/>
+        <label for="email">Your Email: </label>
+        <input type="text" name="bookingEmail" id="bookingEmail"/>
+        <input type="submit" name="submit" id="submit" />
+        <pre id="output"></pre>
+    </form>
+  </body>
+</html>

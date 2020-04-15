@@ -8,9 +8,9 @@
         <link rel="stylesheet" type="text/css" href="lib/jquery-ui.css">
 		<script type="text/javascript" src="lib/jquery-3.4.1.min.js"></script>
 		<script type="text/javascript" src="lib/jquery-ui.js"></script>
-        <script type="text/javascript" src="scripts/booking-javascript2.js">
+        <script type="text/javascript" src="scripts/booking-javascript3.js">
         </script>
-        
+        <script src="scripts/internalApi3.js"></script>
     </head>
     <body>
         <!-- ********************* header *********************** -->
@@ -40,21 +40,24 @@
                 <h2 class="h2Booking" >Promotion Calendar</h2>
                 <div class="hidden" id="promotionCalendar">
                     <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FToronto&amp;src=MWlhODhvdWhrYzl1dXZtdmwwMTZhOHN2NDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23EF6C00" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-                </div>                
+                </div>
+                <pre id="content" style="white-space: pre-wrap;"></pre>
             </div>              
         </div>
             <div class="event-booking" >
                 <h2 class="h2Booking" >Reserve your place</h2>
                     <div id="booking" class="hidden"><h3>Your unforgetable memory starts here</h3>
-                    <form method="get" action="" id="booking-form">               <button id="authorize_button" style="display:             none;">Authorize</button>
-                        <button id="signout_button" style="display: none;">Sign Out</button>
-                    <pre id="content" style="white-space: pre-wrap;"></pre>
-                    
-                    <script type="text/javascript" src="scripts/internalApi.js"></script>
-                    <script async defer src="https://apis.google.com/js/api.js"
-                  onload="this.onload=function(){};handleClientLoad()"
-                  onreadystatechange="if (this.readyState === 'complete') this.onload()">
-                </script>
+                    <form method="put" action="" id="booking-form">
+                    <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+                    </script>
+                    <div id="authorize-div" style="display: none">
+                      <span>Authorize access to Google Calendar API</span>
+                      <!--Button for the user to click to initiate auth sequence -->
+                      <button id="authorize-button" onclick="handleAuthClick(event)">
+                        Authorize
+                      </button>
+                    </div>
+                    <pre id="output"></pre>
                         <div class="flex-container">
                             <div class="booking-customer-info"><h3>Please enter your reservation information:</h3>
                                 <div><label for ="bookingdate">When do you want to visit us:</label></div>
@@ -151,9 +154,5 @@
             </div>
         </footer>
         <!-- ********************* footer end *********************** -->
-        <script async defer src="https://apis.google.com/js/api.js"
-                    onload="this.onload=function(){};handleClientLoad()"
-                    onreadystatechange="if (this.readyState === 'complete') this.onload()" >
-                    </script>
     </body>
 </html>

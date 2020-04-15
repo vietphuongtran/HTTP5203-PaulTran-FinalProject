@@ -1,9 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Calendar API Quickstart</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <p>Google Calendar API Quickstart</p>
 
-       var CLIENT_ID = '1014621907623-psaaohgll979f9m44c7nik0tn9e29d2i.apps.googleusercontent.com';
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize_button" style="display: none;">Authorize</button>
+    <button id="signout_button" style="display: none;">Sign Out</button>
+
+    <pre id="content" style="white-space: pre-wrap;"></pre>
+
+    <script type="text/javascript">
+      // Client ID and API key from the Developer Console
+      var CLIENT_ID = '1014621907623-psaaohgll979f9m44c7nik0tn9e29d2i.apps.googleusercontent.com';
       var API_KEY = 'AIzaSyBcjJih5MQcecjdtUKPHxO8IJX1ODoqLSM';
 
       // Array of API discovery doc URLs for APIs used by the quickstart
-   var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+      var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
 
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
@@ -82,51 +98,56 @@
         var textContent = document.createTextNode(message + '\n');
         pre.appendChild(textContent);
       }
-    function createEvent() {
-        //when create the event grabbed the form and the value inside it
-        var formHandle = document.forms[0];
-        //call on function processForm
-        formHandle.onsubmit = processForm;
-        function processForm() {
-            gapi.load('auth2', function() {
-                var visitorEmail = formHandle.visitor_email;
-                var bookingDate = formHandle.bookingdate;
-                var event = {
-                    'summary': 'Pompeii',
-                    'location': '4213 Tea Garden Circle, Mississauga, L5B 2Z1',
-                    'description': 'Enjoy yiur evening at the best restaurant in the world',
-                    'start': {
-                    'dateTime': bookingDate.value +'T19:00:00-07:00',
-                    'timeZone': 'America/Los_Angeles'
+
+      /**
+       * Print the summary and start datetime/date of the next ten events in
+       * the authorized user's calendar. If no events are found an
+       * appropriate message is printed.
+       */
+        function loadCalendarApi() {
+        gapi.client.load('calendar', 'v3', createEvent);
+        }
+        function createEvent() {
+        var event = {
+            'summary': 'Pompeii Dinner Reservation',
+            'location': '4213 Tea Garden Circle, Mississauga, L5B 2Z1',
+            'description': 'Enjoy your evening at the best restaurant in the world',
+            'start': {
+            'dateTime':  '2020-05-14T19:00:00-04:00',
+            'timeZone': 'Canada/Toronto'
                 },
-                  'end': {
-                    'dateTime': bookingDate.value +'T21:00:00-07:00',
-                    'timeZone': 'America/Los_Angeles'
+              'end': {
+                'dateTime': '2020-05-14T21:00:00-04:00',
+                'timeZone': 'Canada/Toronto'
               },
-                  'recurrence': [
-                    'RRULE:FREQ=DAILY;COUNT=1'
-                  ],
-                  'attendees': [
-                    {'email': visitorEmail.value},
-                  ],
-                  'reminders': {
-                    'useDefault': false,
-                    'overrides': [
-                      {'method': 'email', 'minutes': 24 * 60},
-                      {'method': 'popup', 'minutes': 10}
-                    ]
-                  }
-                };
+              'recurrence': [
+                'RRULE:FREQ=DAILY;COUNT=2'
+              ],
+              'attendees': [
+                {'email': 'phuong.tranviet0307@gmail.com'},
+              ],
+              'reminders': {
+                'useDefault': false,
+                'overrides': [
+                  {'method': 'email', 'minutes': 24 * 60},
+                  {'method': 'popup', 'minutes': 10}
+                ]
+              }
+            };
 
-                var request = gapi.client.calendar.events.insert({
-                  'calendarId': 'primary',
-                  'resource': event
-                });
+            var request = gapi.client.calendar.events.insert({
+              'calendarId': 'phuong.tranviet0307@gmail.com',
+              'resource': event
+            });
 
-                request.execute(function(event) {
-                    appendPre('Event created: ' + event.htmlLink);
-                });      
-        });//end gapi load
-    }//end processForm function 
-}//end createEvent function
- 
+            request.execute(function(event) {
+                appendPre('Event created: %s' + event.htmlLink);
+            });      
+      }
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+  </body>
+</html>
