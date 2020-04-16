@@ -1,0 +1,116 @@
+/*Header*/
+@import url('https://fonts.googleapis.com/css?family=Alex+Brush|Libre+Franklin|Montserrat+Subrayada&display=swap&subset=latin-ext');
+body {
+   font-family: 'Libre Franklin', sans-serif; 
+}
+.flex {
+    display:flex;
+    flex-flow: row wrap;
+}
+#headerContainer {
+    top: 0;
+    width: 100%;
+    background-color: black;
+}
+#header {
+    display: flex;
+    flex-flow: row wrap;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 12px 0 rgba(0, 0, 0, 0.19);
+}
+#header-logo {
+    flex: 2 0 0;
+    font-family: 'Alex Brush', cursive;
+    font-size: 25px;
+    font-weight: bolder;
+    margin-left: 3%;
+    margin-top: 1.5%;
+}
+#header-logo a {
+    color: #f1f1f1;
+}
+#header-nav {
+    flex: 5 0 0;
+    margin: 1% auto;
+    font-weight: bolder;
+    color: #f1f1f1;
+}
+#header-nav ul li {
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    width: 18.5%;
+    font-size: 14px;
+    transition: all 0.3s ease; 
+}
+#header-nav ul li:hover {
+    transform: scale(1.5);
+}
+#header-nav a {
+    color: #f1f1f1;
+}
+#header-booking {
+    flex: 2 0 0;
+    margin-left: 3%;
+    margin-top: 2%;
+}
+#header-booking a {
+    color: #f1f1f1;
+    border: 1px #5876b2 solid;
+    padding: 5px 8px;
+    background: #5876b2;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.19);
+}
+#header-booking a:hover {
+    color: #5876b2;
+    background: white;
+}
+/*Page Content*/
+#authorize-div {
+    display: none;
+}
+.pageContainer {
+    padding-top: 2em;
+    background-color: #4B3621;
+    height: 900px;
+}
+.bookingPage {
+    flex: 2 0 0;
+    text-align: center;
+}
+.pageContent {
+    flex: 1 0 0;
+    text-align: center; 
+}
+.contentContainer {
+    background-color: #CDDFA0;
+    padding: 2em;
+    height: 400px;
+    border-radius: 10px;
+}
+.contentContainer div {
+    margin-bottom: 0.5em;
+}
+#contactInfo {
+    margin-top: 1em;
+    background-color: #BDE4A8;
+    height: 180px;
+}
+#booking-sitename {
+    text-align: center;
+    transform: translateY(-1500%);
+    color:white;
+    font-weight:bold;
+    font-size: 2em;
+}
+#facebookShare {
+    width: 30%;
+}
+/*Footer*/
+#footer {
+    background: black;
+    color: white;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+}

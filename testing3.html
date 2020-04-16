@@ -3,23 +3,86 @@
     <script type="text/javascript" src="testing3.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=checkAuth">
     </script>
+    <link rel="stylesheet" type="text/css" href="testing3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
+  <header id="headerContainer">
+        <div id="header" class="flex">
+            <div id="header-logo"><a href="index.html">Pompeii BBQ</a></div>
+            <div id="header-nav">
+            <ul>
+                <li><a href="#">WELCOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">MENU</a></li>
+                <li><a href="#">PROMOTION</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+            </div>
+            <div id="header-booking"><a href="booking.html">MAKE A RESERVATION</a></div>
+        </div>
+  </header>
   <body>
-    <div id="authorize-div" style="display: none">
-      <span>Authorize access to Google Calendar API</span>
-      <!--Button for the user to click to initiate auth sequence -->
-      <button id="authorize-button" onclick="handleAuthClick(event)">
-        Authorize
-      </button>
-    </div>
-    <pre id="output"></pre>
-    <form method="put" action ="">
-        <label for="bookingDate">When do you want to visit us:</label>
-        <input type="date" name="bookingDate" id="bookingDate"/>
-        <label for="email">Your Email: </label>
-        <input type="text" name="bookingEmail" id="bookingEmail"/>
-        <input type="submit" name="submit" id="submit" />
-        <pre id="output"></pre>
-    </form>
+      <div class="pageContainer">
+        <div class="flex"> <!--flex container 1-->
+             <div class="bookingPage"><!--first box-->
+                  <img src="image/high-endrestaurant.jpg" alt="A restaurant table view"/>
+                  <div id="booking-sitename"><h2>Pompeii Restaurants Reservation</h2></div>
+              </div><!--end first box-->
+              <div class="pageContent"><!--second box-->
+                <div class="contentContainer" id="bookingForm">
+                    <div id="authorize-div">
+                        <span>Authorize access to Google Calendar API</span>
+                        <!--Button for the user to click to initiate auth sequence -->
+                        <button id="authorize-button" onclick="handleAuthClick(event)">
+                        Authorize</button>
+                    </div>
+                    <pre id="output"></pre>
+                    <h3>Let's create memmory here</h3>
+                    <form method="put" action ="">
+                        <div><label for="bookingDate">When do you want to visit us:</label></div>
+                        <div><input type="date" name="bookingDate" id="bookingDate"/>
+                        </div>
+                        <div><label for="email">Your Email: </label></div>
+                        <div><input type="text" name="bookingEmail" id="bookingEmail"/>
+                        </div>
+                        <div>
+                            <div><label for ="bookingQuantity">How many people do you plan to go with:</label></div>
+                            <div>
+                                <select id="bookingQuantity" name="bookingQuantity">
+                                    <option value="none">--Please select one--</option> 
+                                    <option value="0">I am going alone</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="3">4</option>
+                                    <option value="3">5</option>
+                                    <option value="more than 5">More than 5</option>
+                                    <option value="more than 10">More than 10</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="submit" name="submit" id="submit" />
+                        </div>
+                    </form>
+                    <h3>Share on your Facebook to get 20% off</h3>
+                    <div id="fb-root"></div>
+                    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=718202852051584&autoLogAppEvents=1"></script>
+                    <div data-href="http://paultrandesign.com" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fpaultrandesign.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><img id="facebookShare" src ="image/Facebook-Share-Button-1.png" /></a></div>
+                </div>
+                <div class="contentContainer" id="contactInfo">
+                    <h3>Let's stay in touch</h3>
+                    <div>Our address: 205 Humber College Blvd, Etobicoke, ON M9W 5L7</div>
+                    <div>Our opening hour: Monday - Friday 19:00 - 00:00</div>
+                    <div>Our telephone: 647 569 2906</div>
+                    <div>Email: contact@paultrandesign.com</div>
+                </div>
+            </div><!---end 2nd box-->
+        </div><!--end flex container-->
+      </div><!--endPageContainer-->
+      <footer id="footer">
+        Pompeii BBQ Restaurant 2020. Developed by Paul Tran. 
+        ALL RIGHTS RESERVED
+      </footer>
   </body>
 </html>
