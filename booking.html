@@ -31,13 +31,14 @@
               <div class="pageContent"><!--second box-->
                 <div class="contentContainer" id="bookingForm">
                     <div id="authorize-div">
-                        <span>Authorize access to Google Calendar API</span>
-                        <!--Button for the user to click to initiate auth sequence -->
-                        <button id="authorize-button" onclick="handleAuthClick(event)">
-                        Authorize</button>
+                        <h3>Click to add reservation to your calendar</h3>
+                        <!--Authorize button, will disappear after authorize complete-->
+                        <div><button id="authorize-button" onclick="handleAuthClick(event)">
+                        <img id="calendar" src ="image/google-calendar-icon.png"></button></div>
                     </div>
-<!--                    <pre id="output"></pre>-->
+                    <pre id="output"></pre>
                     <h3>Let's create memmory here</h3>
+                    <pre id="output"></pre>
                     <form method="put" action ="">
                         <div><label for="bookingDate">When do you want to visit us:</label></div>
                         <div><input type="date" name="bookingDate" id="bookingDate"/>
@@ -72,7 +73,7 @@
                     <h3>Share our website on your Facebook to get 20% off</h3>
                     <div id="fb-root"></div>
                     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=718202852051584&autoLogAppEvents=1"></script>
-                    <div data-href="http://paultrandesign.com" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fpaultrandesign.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><img id="facebookShare" src ="image/Facebook-Share-Button-1.png" /></a></div>
+                    <div data-href="http://paultrandesign.com" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fpaultrandesign.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><img id="facebookShare" src ="image/facebookShare.png" /></a></div>
                 </div>
                 <div class="contentContainer" id="contactInfo">
                     <h3>Let's stay in touch</h3>

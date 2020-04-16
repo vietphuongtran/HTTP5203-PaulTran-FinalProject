@@ -68,6 +68,13 @@ body {
 #authorize-div {
     display: none;
 }
+#calendar {
+    width: 30%;
+}
+#authorize-button {
+    background-color:#CDDFA0;
+    border: none;
+}
 .pageContainer {
     padding-top: 2em;
     background-color: #4B3621;
@@ -84,7 +91,7 @@ body {
 .contentContainer {
     background-color: #CDDFA0;
     padding: 2em;
-    height: 500px;
+    height: 550px;
     border-radius: 10px;
 }
 .contentContainer div {
@@ -101,6 +108,16 @@ body {
     color:white;
     font-weight:bold;
     font-size: 2em;
+}
+#submit {
+    color: white;
+    background: #FDA251;
+    border: 1px solid #FB8F3D;
+}
+
+#submit:hover {
+    border: 1px solid #EB5200;
+    box-shadow: 0 1px #EFEFEF;
 }
 #confirm {
    font-style: italic; 
