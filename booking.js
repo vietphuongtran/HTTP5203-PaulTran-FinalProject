@@ -60,6 +60,7 @@ gapi.client.load('calendar', 'v3', insertEvent);
 *
 * @param {string} message Text to be placed in pre element.
 */
+//Problems: append pre is not working!!
 function appendPre(message) {
 var pre = document.getElementById('output');
 var textContent = document.createTextNode(message + '\n');
@@ -72,9 +73,40 @@ function insertEvent() {
     //call on function processForm
     formHandle.onsubmit = processForm;
     function processForm() {
-        //validate the form
-//        var bookingDate = document.getElementById("bookingDate");
+        //validate the form        
+        //validate bookingDate
+        var bookingDate = document.getElementById("bookingDate");
+        var bookingDateErr = document.getElementById("bookingDateErr");
+        //validate Email
+        var bookingEmail = document.getElementById("bookingEmail");
+        var bookingEmailErr = document.getElementById("bookingEmailErr");
+        var regexEmail = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/
+        //validate bookingQuantity
+        var bookingQuantity = document.getElementById("bookingQuantity");
+        var bookingQuantityErr = document.getElementById("bookingQuantityErr");
+//        //confirm
+//        var confirmMsg = document.getElementById("confirm");
+        //Problem: Can't get a confirmMsg here cuz it requires to return false to the form but to insert to calendar, it requires return true
+        //Solution: have a warning at the end so that people will know to fill out every field and check their calendar.
         
+        //validate booking date
+        if (bookingDate.value === "" || bookingDate.value === null) {
+            bookingDate.focus();
+            bookingDateErr.innerHTML = "Please enter a date";
+            return false;
+        }
+        //validate Email
+        if (bookingEmail.value === "" || bookingEmail.value === null || !regexEmail.test(bookingEmail.value)) {
+            bookingEmail.focus();
+            bookingEmailErr.innerHTML = "Please enter an email";
+            return false;
+        }
+        //validate bookingQuantity
+        if (bookingQuantity.value === "none" || bookingQuantity.value === null) {
+            bookingQuantity.focus();
+            bookingQuantityErr.innerHTML = "Please enter who you are going with";
+            return false;
+        }
         var event = {
           'summary': 'Pompeii Dinner Reservation',
           'location': '205 Humber College Blvd, Etobicoke, ON M9W 5L7',
@@ -88,6 +120,7 @@ function insertEvent() {
             'timeZone': 'America/New_York'
           },
           'recurrence': [
+              //it is not a recurring event, we don't need this one
 //            'RRULE:FREQ=DAILY;COUNT=2'
           ],
           'attendees': [
@@ -107,6 +140,9 @@ function insertEvent() {
         });
 
         request.execute(function(event) {
+            //Problem 1: event.htmlLink is undefined
+            //Solution: switch it with event.summary
+            //Problem 2: append pre is not working
             appendPre('Event created: ' + event.summary);
             console.log("Event added to Calendar");
             console.log(pre);

@@ -84,7 +84,7 @@ body {
 .contentContainer {
     background-color: #CDDFA0;
     padding: 2em;
-    height: 400px;
+    height: 500px;
     border-radius: 10px;
 }
 .contentContainer div {
@@ -101,6 +101,9 @@ body {
     color:white;
     font-weight:bold;
     font-size: 2em;
+}
+#confirm {
+   font-style: italic; 
 }
 #facebookShare {
     width: 30%;
