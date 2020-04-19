@@ -1,6 +1,6 @@
-    //
-var CLIENT_ID = '1014621907623-psaaohgll979f9m44c7nik0tn9e29d2i.apps.googleusercontent.com';
-var API_KEY = 'AIzaSyBcjJih5MQcecjdtUKPHxO8IJX1ODoqLSM';
+    //I have to erase API KEY here for security reason
+var CLIENT_ID = '<YOUR_API_ID>';
+var API_KEY = '<YOUR_API_KEY>';
 
 var SCOPES = ["https://www.googleapis.com/auth/calendar"];
 
